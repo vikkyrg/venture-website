@@ -1,104 +1,163 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaCheckCircle, FaLaptopCode, FaCloud, FaBrain, FaTerminal, FaGraduationCap } from 'react-icons/fa';
+import { FaArrowRight, FaCheckCircle, FaLaptopCode, FaGraduationCap, FaPaperPlane, FaLayerGroup, FaShieldAlt, FaStar } from 'react-icons/fa';
+import { getCourses } from '../services/api';
 
 const Hero = () => {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchPublishedCourses = async () => {
+      try {
+        const res = await getCourses({ status: 'published' });
+        setCourses((res.data || []).slice(0, 4));
+      } catch (err) {
+        console.error('Error fetching courses in Hero', err);
+      }
+    };
+    fetchPublishedCourses();
+  }, []);
+
   return (
-    <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 bg-gradient-to-b from-slate-50 via-blue-50/20 to-slate-50 border-b border-slate-200/80 overflow-hidden">
+      
+      {/* Background Decorations */}
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute -bottom-10 left-10 w-80 h-80 bg-slate-300/20 rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none -z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Hero Column */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Left Hero Content */}
+          <div className="lg:col-span-7 space-y-7 text-center lg:text-left">
             
-            {/* Small Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold uppercase tracking-wider">
-              <FaGraduationCap className="text-teal-700 text-sm" />
-              Professional Technology Education
+            {/* Corporate Badge */}
+            <div data-aos="fade-down" data-aos-delay="100" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-blue-200/80 text-blue-900 text-xs font-bold uppercase tracking-wider shadow-xs">
+              <FaGraduationCap className="text-[#087FC1] text-sm" />
+              <span>Corporate Technology Training Institute</span>
             </div>
 
-            {/* Main Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-              Advance Your Career in <br />
-              <span className="text-teal-700">
-                Cloud, DevOps & AIOps
+            {/* Main Headline */}
+            <h1 data-aos="fade-up" data-aos-delay="200" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+              Empowering Professionals With <br className="hidden sm:inline" />
+              <span className="text-[#087FC1] relative inline-block mt-1">
+                Job-Ready Technical Expertise
               </span>
             </h1>
 
-            {/* Subtext */}
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Venture Soft provides structured, hands-on training programs designed by industry experts. Master enterprise-grade technologies with real-world project labs and career mentorship.
+            {/* Subheading */}
+            <p data-aos="fade-up" data-aos-delay="300" className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              VentureSoft delivers structured, practitioner-led IT training programs. Master modern enterprise technologies through live interactive labs, capstone builds, and career guidance.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            {/* Action Buttons */}
+            <div data-aos="fade-up" data-aos-delay="400" className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-1">
               <Link
                 to="/courses"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold text-sm tracking-wide shadow transition-all transform hover:-translate-y-0.5"
+                className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#087FC1] hover:bg-[#075A9C] text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/20 transition-all"
               >
-                Explore All Programs
-                <FaArrowRight className="text-xs" />
+                Explore Programs
+                <FaArrowRight className="text-xs text-blue-200 arrow-icon" />
               </Link>
               <Link
                 to="/enquiry"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold text-sm shadow-sm transition-all"
+                className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#087FC1] border border-[#087FC1]/80 font-bold text-xs uppercase tracking-wider shadow-xs transition-all"
               >
-                Talk to a Career Advisor
+                <FaPaperPlane className="text-xs text-[#087FC1]" />
+                Enquire Now
               </Link>
             </div>
 
-            {/* Trust Bulletins */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-600 font-medium">
-              <div className="flex items-center gap-2">
-                <FaCheckCircle className="text-teal-700" />
-                <span>Hands-on Live Labs</span>
+            {/* Value Checkpoints */}
+            <div data-aos="fade-in" data-aos-delay="500" className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-700 font-semibold border-t border-slate-200/60 mt-6">
+              <div className="flex items-center gap-2 hover:text-[#087FC1] transition-colors">
+                <FaCheckCircle className="text-[#087FC1] text-sm shrink-0" />
+                <span>Practitioner-Led Instruction</span>
               </div>
-              <div className="flex items-center gap-2">
-                <FaCheckCircle className="text-teal-700" />
-                <span>Industry-Aligned Syllabi</span>
+              <div className="flex items-center gap-2 hover:text-[#087FC1] transition-colors">
+                <FaCheckCircle className="text-[#087FC1] text-sm shrink-0" />
+                <span>Hands-on Scenario Labs</span>
               </div>
-              <div className="flex items-center gap-2">
-                <FaCheckCircle className="text-teal-700" />
-                <span>Career Placement Support</span>
+              <div className="flex items-center gap-2 hover:text-[#087FC1] transition-colors">
+                <FaCheckCircle className="text-[#087FC1] text-sm shrink-0" />
+                <span>Verified Career Certificate</span>
               </div>
             </div>
           </div>
 
           {/* Right Hero Visual Card */}
-          <div className="lg:col-span-5 relative">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Core Training Pillars</span>
-                <span className="text-xs font-semibold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-100">Venture Soft Institute</span>
-              </div>
+          <div className="lg:col-span-5 relative" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
+            {/* Soft Glow behind visual */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-sky-400 rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition duration-500"></div>
 
-              {/* Visual Tech Grid */}
-              <div className="grid grid-cols-2 gap-4 py-2">
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-teal-500 transition-all">
-                  <FaBrain className="text-3xl text-teal-700 mb-2" />
-                  <h4 className="text-sm font-bold text-slate-900">AIOps Mastery</h4>
-                  <p className="text-xs text-slate-500 mt-1">ML anomaly detection & incident correlation</p>
-                </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-teal-500 transition-all">
-                  <FaCloud className="text-3xl text-blue-600 mb-2" />
-                  <h4 className="text-sm font-bold text-slate-900">AWS Cloud Architect</h4>
-                  <p className="text-xs text-slate-500 mt-1">EC2, VPC, IAM, S3 & High Availability</p>
-                </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-teal-500 transition-all">
-                  <FaLaptopCode className="text-3xl text-indigo-600 mb-2" />
-                  <h4 className="text-sm font-bold text-slate-900">DevOps & K8s</h4>
-                  <p className="text-xs text-slate-500 mt-1">Docker, CI/CD, Terraform & Ansible</p>
-                </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 hover:border-teal-500 transition-all">
-                  <FaTerminal className="text-3xl text-amber-600 mb-2" />
-                  <h4 className="text-sm font-bold text-slate-900">Linux Automation</h4>
-                  <p className="text-xs text-slate-500 mt-1">Bash, SED, AWK & process scripting</p>
+            <div className="relative bg-white border border-slate-200/90 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-500">
+              <div className="image-zoom-container relative">
+                <img 
+                  src="/hero-image.jpg" 
+                  alt="IT Professionals Collaborating" 
+                  className="w-full h-52 object-cover object-center border-b border-slate-200/80"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent flex items-end p-4">
+                  <span className="text-white text-xs font-semibold flex items-center gap-1.5">
+                    <FaStar className="text-amber-300 text-xs" /> Real-World Enterprise Labs & Workflows
+                  </span>
                 </div>
               </div>
+              
+              <div className="p-6 space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <FaShieldAlt className="text-[#087FC1]" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-800">Featured Programs</span>
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-[#087FC1] px-2.5 py-1 rounded-md border border-blue-200">
+                    Live Enrolling
+                  </span>
+                </div>
 
-              {/* Status Code Strip */}
-              <div className="bg-slate-900 rounded-xl p-3 text-xs text-slate-200 flex items-center justify-between font-mono">
-                <span className="text-teal-400">Classroom & Live Online Sessions</span>
-                <span className="text-[10px] bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded font-semibold uppercase">Enrollment Open</span>
+                {/* Dynamic Course Cards Grid */}
+                <div className="grid grid-cols-1 gap-3 py-1">
+                  {courses.length > 0 ? (
+                    courses.map((c, idx) => (
+                      <Link
+                        key={c._id || c.slug}
+                        to={`/courses/${c.slug}`}
+                        className="group p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-[#087FC1] hover:bg-white transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-center justify-between"
+                        data-aos="fade-up"
+                        data-aos-delay={400 + (idx * 100)}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="p-2.5 bg-white rounded-lg border border-slate-200/80 text-[#087FC1] group-hover:bg-blue-50 transition-colors shrink-0 shadow-2xs">
+                            <FaLaptopCode className="text-base" />
+                          </div>
+                          <div>
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#087FC1] transition-colors line-clamp-1">
+                              {c.title}
+                            </h4>
+                            <span className="text-[11px] text-slate-500 block mt-0.5">
+                              {c.duration || 'Structured Track'} • {c.level || 'Intermediate'}
+                            </span>
+                          </div>
+                        </div>
+                        <FaArrowRight className="text-xs text-slate-400 group-hover:text-[#087FC1] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="text-center text-xs text-slate-500 py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                      <FaLayerGroup className="mx-auto text-2xl text-slate-300 mb-2" />
+                      Published courses will appear here dynamically.
+                    </div>
+                  )}
+                </div>
+
+                {/* Status Footer Strip */}
+                <div className="bg-[#0B152C] rounded-xl p-3.5 text-xs text-slate-300 flex items-center justify-between shadow-xs">
+                  <span className="font-semibold text-slate-200">Classroom & Online Training</span>
+                  <span className="text-[10px] font-bold bg-[#087FC1] text-white px-2.5 py-1 rounded-md uppercase tracking-wider">
+                    Updated Syllabi
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -110,3 +169,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

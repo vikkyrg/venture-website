@@ -11,7 +11,7 @@ const About = () => {
 
         {/* Hero Banner */}
         <div className="py-10 border-b border-slate-200">
-          <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
+          <span className="text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
             About Venture Soft
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
@@ -25,7 +25,7 @@ const About = () => {
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-12">
           <div className="p-8 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-sm">
-            <div className="p-3 bg-teal-50 rounded-xl inline-block border border-teal-100 text-teal-700 text-2xl">
+            <div className="p-3 bg-blue-50 rounded-xl inline-block border border-blue-100 text-blue-700 text-2xl">
               <FaBullseye />
             </div>
             <h3 className="text-lg font-bold text-slate-900">Our Mission</h3>
@@ -35,7 +35,7 @@ const About = () => {
           </div>
 
           <div className="p-8 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-sm">
-            <div className="p-3 bg-teal-50 rounded-xl inline-block border border-teal-100 text-teal-700 text-2xl">
+            <div className="p-3 bg-blue-50 rounded-xl inline-block border border-blue-100 text-blue-700 text-2xl">
               <FaLightbulb />
             </div>
             <h3 className="text-lg font-bold text-slate-900">Our Philosophy</h3>
@@ -56,7 +56,7 @@ const About = () => {
               { title: "Career Acceleration", desc: "Genuine guidance on technical interviews, profile optimization, and resume creation." }
             ].map((v, i) => (
               <div key={i} className="p-6 rounded-2xl bg-white border border-slate-200 space-y-2 shadow-sm">
-                <FaCheckCircle className="text-teal-700 text-lg" />
+                <FaCheckCircle className="text-blue-700 text-lg" />
                 <h4 className="text-base font-bold text-slate-900">{v.title}</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">{v.desc}</p>
               </div>

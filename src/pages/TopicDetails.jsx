@@ -47,7 +47,7 @@ const TopicDetails = () => {
 
         {/* Topic Banner */}
         <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm space-y-2 my-6">
-          <span className="text-[11px] font-bold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200 px-3 py-1 rounded-md">
+          <span className="text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1 rounded-md">
             Learning Topic
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">{topic.title}</h1>
@@ -61,13 +61,13 @@ const TopicDetails = () => {
             <div className="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm space-y-4 sticky top-24">
               <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2 flex items-center justify-between">
                 <span>Curriculum Sidebar</span>
-                <span className="text-[10px] bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold uppercase">{course.title}</span>
+                <span className="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-semibold uppercase">{course.title}</span>
               </h4>
 
               <div className="space-y-3 text-xs">
                 <div>
                   <span className="font-bold text-slate-400 uppercase tracking-wider text-[10px] block mb-1">Current Module</span>
-                  <Link to={`/courses/${course.slug}/module/${mod.slug}`} className="font-semibold text-teal-700 hover:underline block">
+                  <Link to={`/courses/${course.slug}/module/${mod.slug}`} className="font-semibold text-blue-700 hover:underline block">
                     {mod.title}
                   </Link>
                 </div>
@@ -82,11 +82,11 @@ const TopicDetails = () => {
                             to={`/courses/${course.slug}/module/${mod.slug}/topic/${t.slug}`}
                             className={`flex items-center gap-2 p-2 rounded-md transition-colors ${
                               t.slug === topic.slug
-                                ? 'bg-teal-50 text-teal-800 font-bold border-l-4 border-teal-700'
+                                ? 'bg-blue-50 text-blue-800 font-bold border-l-4 border-blue-700'
                                 : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                             }`}
                           >
-                            <FaChevronRight className={`text-[9px] ${t.slug === topic.slug ? 'text-teal-700' : 'text-slate-400'}`} />
+                            <FaChevronRight className={`text-[9px] ${t.slug === topic.slug ? 'text-blue-700' : 'text-slate-400'}`} />
                             <span className="line-clamp-1">{t.title}</span>
                           </Link>
                         </li>
@@ -100,7 +100,7 @@ const TopicDetails = () => {
                 <div className="border-t border-slate-100 pt-3">
                   <Link
                     to={`/courses/${course.slug}`}
-                    className="text-xs font-bold text-slate-500 hover:text-teal-700 block"
+                    className="text-xs font-bold text-slate-500 hover:text-blue-700 block"
                   >
                     ← View Full Course Syllabus
                   </Link>
@@ -115,15 +115,15 @@ const TopicDetails = () => {
             
             {/* Learning Objectives */}
             {topic.learningObjectives && topic.learningObjectives.length > 0 && (
-              <div className="bg-teal-50/60 border border-teal-100 p-6 rounded-2xl space-y-3 shadow-sm">
-                <h3 className="text-sm font-bold text-teal-900 flex items-center gap-2">
-                  <FaCheckCircle className="text-teal-700" />
+              <div className="bg-blue-50/60 border border-blue-100 p-6 rounded-2xl space-y-3 shadow-sm">
+                <h3 className="text-sm font-bold text-blue-900 flex items-center gap-2">
+                  <FaCheckCircle className="text-blue-700" />
                   Key Learning Objectives
                 </h3>
                 <ul className="space-y-2 text-xs text-slate-700">
                   {topic.learningObjectives.map((obj, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-700 mt-1.5 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-1.5 flex-shrink-0" />
                       <span>{obj}</span>
                     </li>
                   ))}
@@ -134,7 +134,7 @@ const TopicDetails = () => {
             {/* Markdown / Main Topic Content */}
             <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm space-y-4">
               <h3 className="text-base sm:text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-                <FaBookReader className="text-teal-700" />
+                <FaBookReader className="text-blue-700" />
                 Curriculum Topic Content
               </h3>
               <div className="prose max-w-none text-slate-700 text-xs sm:text-sm leading-relaxed whitespace-pre-line">
@@ -161,7 +161,7 @@ const TopicDetails = () => {
               {navigation.prev ? (
                 <Link
                   to={`/courses/${course.slug}/module/${mod.slug}/topic/${navigation.prev.slug}`}
-                  className="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-teal-700 bg-white border border-slate-200 px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
+                  className="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-blue-700 bg-white border border-slate-200 px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
                 >
                   <FaArrowLeft />
                   <span>Previous Topic</span>
@@ -171,7 +171,7 @@ const TopicDetails = () => {
               {navigation.next && (
                 <Link
                   to={`/courses/${course.slug}/module/${mod.slug}/topic/${navigation.next.slug}`}
-                  className="flex items-center gap-2 text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 px-4 py-2.5 rounded-lg shadow transition-all"
+                  className="flex items-center gap-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 px-4 py-2.5 rounded-lg shadow transition-all"
                 >
                   <span>Next Topic</span>
                   <FaArrowRight />

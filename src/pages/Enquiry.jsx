@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-import { submitEnquiry } from '../services/api';
+import { submitEnquiry, getCourses } from '../services/api';
 import { FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 
 const Enquiry = () => {
@@ -8,13 +8,32 @@ const Enquiry = () => {
     name: '',
     email: '',
     phone: '',
-    course: 'AIOps Mastery',
+    course: '',
     qualification: '',
     experience: '',
     preferredMode: 'Live Online',
     message: ''
   });
+  const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [coursesLoading, setCoursesLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPublishedCourses = async () => {
+      try {
+        const res = await getCourses({ status: 'published' });
+        setCourses(res.data || []);
+        if (res.data && res.data.length > 0) {
+          setFormData(prev => ({ ...prev, course: res.data[0].title }));
+        }
+      } catch (err) {
+        console.error('Error fetching courses', err);
+      } finally {
+        setCoursesLoading(false);
+      }
+    };
+    fetchPublishedCourses();
+  }, []);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -35,7 +54,7 @@ const Enquiry = () => {
         name: '',
         email: '',
         phone: '',
-        course: 'AIOps Mastery',
+        course: courses.length > 0 ? courses[0].title : '',
         qualification: '',
         experience: '',
         preferredMode: 'Live Online',
@@ -57,7 +76,7 @@ const Enquiry = () => {
 
         <div className="bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-sm space-y-6 my-6">
           <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
+            <span className="text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
               Free Career Counseling
             </span>
             <h1 className="text-3xl font-extrabold text-slate-900">Get Started With Venture Soft</h1>
@@ -67,8 +86,8 @@ const Enquiry = () => {
           </div>
 
           {successMsg && (
-            <div className="p-4 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 text-xs flex items-center gap-2 font-semibold">
-              <FaCheckCircle className="text-base text-teal-700" />
+            <div className="p-4 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-xs flex items-center gap-2 font-semibold">
+              <FaCheckCircle className="text-base text-blue-700" />
               <span>{successMsg}</span>
             </div>
           )}
@@ -91,7 +110,7 @@ const Enquiry = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Full Name"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
               <div>
@@ -103,7 +122,7 @@ const Enquiry = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
             </div>
@@ -118,7 +137,7 @@ const Enquiry = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
               <div>
@@ -127,12 +146,15 @@ const Enquiry = () => {
                   name="course"
                   value={formData.course}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 >
-                  <option value="AIOps Mastery">AIOps Mastery</option>
-                  <option value="AWS Cloud Architecture">AWS Cloud Architecture</option>
-                  <option value="DevOps & Kubernetes">DevOps & Kubernetes</option>
-                  <option value="Linux Shell Scripting">Linux Shell Scripting</option>
+                  {coursesLoading ? (
+                    <option>Loading courses...</option>
+                  ) : courses.length > 0 ? (
+                    courses.map(c => <option key={c._id} value={c.title}>{c.title}</option>)
+                  ) : (
+                    <option>No courses available</option>
+                  )}
                 </select>
               </div>
             </div>
@@ -146,7 +168,7 @@ const Enquiry = () => {
                   value={formData.qualification}
                   onChange={handleChange}
                   placeholder="e.g. B.Tech / BCA / MCA"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
               <div>
@@ -155,7 +177,7 @@ const Enquiry = () => {
                   name="preferredMode"
                   value={formData.preferredMode}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 >
                   <option value="Live Online">Live Online</option>
                   <option value="Classroom Bangalore">Classroom (Bangalore)</option>
@@ -172,16 +194,16 @@ const Enquiry = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Mention any specific queries or weekend batch preferences..."
-                className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs uppercase tracking-wider shadow transition-all flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2"
             >
-              <FaPaperPlane />
+              <FaPaperPlane className="text-blue-400" />
               {loading ? 'Submitting Enquiry...' : 'Submit Enquiry'}
             </button>
           </form>

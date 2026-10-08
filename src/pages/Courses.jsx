@@ -54,15 +54,15 @@ const Courses = () => {
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200">
-          <div>
-            <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
-              Training Catalog
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#087FC1] uppercase tracking-wider bg-blue-50/80 px-3 py-1.5 rounded-md border border-blue-200/50 mb-3">
+              <FaSearch className="text-[9px]" /> Training Catalog
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">
-              Explore All Training Programs
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101A35] tracking-tight leading-tight">
+              Explore Our <span className="text-[#087FC1]">Industry-Leading</span> Programs
             </h1>
-            <p className="text-slate-600 text-xs sm:text-sm mt-1.5 max-w-xl">
-              Choose from our flagship technology tracks. Click any course to view full module and topic breakdowns.
+            <p className="text-slate-600 text-sm sm:text-base mt-4 leading-relaxed max-w-lg">
+              Choose from our flagship technology tracks. Click any course to view full module and topic breakdowns and begin your journey.
             </p>
           </div>
 
@@ -71,10 +71,10 @@ const Courses = () => {
             <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
             <input
               type="text"
-              placeholder="Search courses (e.g. AWS, DevOps)..."
+              placeholder="Search courses by title or keyword..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:border-teal-600 shadow-sm transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#087FC1] focus:ring-1 focus:ring-[#087FC1] shadow-sm transition-all"
             />
           </div>
         </div>

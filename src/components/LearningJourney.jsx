@@ -1,36 +1,91 @@
+import { FaGraduationCap, FaLaptopCode, FaProjectDiagram, FaRocket, FaChartLine } from 'react-icons/fa';
+
 const LearningJourney = () => {
   const steps = [
-    { number: "01", title: "Select Track", desc: "Choose your primary focus: AIOps, AWS, DevOps, or Shell Scripting." },
-    { number: "02", title: "Master Fundamentals", desc: "Build solid foundations in Linux, cloud architecture, and automation." },
-    { number: "03", title: "Real-world Scenario Labs", desc: "Configure multi-tier cloud environments and container clusters." },
-    { number: "04", title: "Build Capstone Projects", desc: "Complete end-to-end projects with production GitOps pipelines." },
-    { number: "05", title: "Career & Interview Prep", desc: "Mock technical interviews and resume optimization for top roles." },
+    { 
+      number: "01", 
+      title: "Learn", 
+      icon: <FaGraduationCap className="text-[#087FC1] text-lg" />,
+      desc: "Master foundational principles through structured live lectures and module breakdowns." 
+    },
+    { 
+      number: "02", 
+      title: "Practice", 
+      icon: <FaLaptopCode className="text-[#087FC1] text-lg" />,
+      desc: "Apply concepts in dedicated cloud environments with guided lab scenarios." 
+    },
+    { 
+      number: "03", 
+      title: "Build", 
+      icon: <FaProjectDiagram className="text-[#087FC1] text-lg" />,
+      desc: "Develop portfolio-ready capstone projects reflecting enterprise architectures." 
+    },
+    { 
+      number: "04", 
+      title: "Apply", 
+      icon: <FaRocket className="text-[#087FC1] text-lg" />,
+      desc: "Solve complex troubleshooting challenges and infrastructure performance scenarios." 
+    },
+    { 
+      number: "05", 
+      title: "Grow", 
+      icon: <FaChartLine className="text-[#087FC1] text-lg" />,
+      desc: "Advance your technical capability with practitioner guidance and skill verification." 
+    }
   ];
 
   return (
-    <section className="py-16 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-slate-50 via-blue-50/25 to-slate-50 border-b border-slate-200/80 relative overflow-hidden">
+      
+      {/* Background Decorations */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none -z-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
-            Structured Stepper
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-bold text-[#087FC1] uppercase tracking-wider bg-white px-4 py-1.5 rounded-full border border-slate-200/80 shadow-2xs inline-block">
+            Learning Methodology
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">
-            Your Learning & Mastery Journey
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+            Our Structured Practical Learning Framework
           </h2>
+          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+            A proven 5-stage progressive learning path engineered to transform theory into job-ready technical confidence.
+          </p>
         </div>
 
-        {/* Stepper Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          {steps.map((s, idx) => (
-            <div key={idx} className="bg-white border border-slate-200 p-6 rounded-2xl flex flex-col justify-between hover:border-teal-500/50 shadow-sm transition-all">
-              <div>
-                <span className="text-3xl font-black text-teal-700/20 font-mono">{s.number}</span>
-                <h4 className="text-base font-bold text-slate-900 mt-2">{s.title}</h4>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{s.desc}</p>
+        {/* Stepper Timeline Container */}
+        <div className="relative">
+          
+          {/* Connecting Line for Desktop */}
+          <div className="hidden lg:block absolute top-10 left-12 right-12 h-0.5 bg-blue-200/80 -z-0" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4 relative z-10">
+            {steps.map((s, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white border border-slate-200/90 p-6 rounded-2xl flex flex-col justify-between hover:border-[#087FC1] shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-3xl font-black text-[#087FC1]/25 font-mono group-hover:text-[#087FC1] transition-colors">{s.number}</span>
+                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 group-hover:bg-blue-50/80 group-hover:border-blue-200 transition-colors shadow-2xs">
+                      {s.icon}
+                    </div>
+                  </div>
+                  <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#087FC1] transition-colors">{s.title}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">{s.desc}</p>
+                </div>
+
+                <div className="mt-6 pt-3 border-t border-slate-100 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-[#087FC1] transition-colors">
+                  <span>Step {s.number}</span>
+                  <span className="text-[#087FC1]">→</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
       </div>
@@ -39,3 +94,4 @@ const LearningJourney = () => {
 };
 
 export default LearningJourney;
+

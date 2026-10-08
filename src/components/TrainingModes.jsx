@@ -4,7 +4,7 @@ import { FaLaptop, FaChalkboardTeacher, FaBuilding } from 'react-icons/fa';
 const TrainingModes = () => {
   const modes = [
     {
-      icon: <FaLaptop className="text-teal-700 text-2xl" />,
+      icon: <FaLaptop className="text-blue-700 text-2xl" />,
       title: "Live Interactive Online",
       desc: "Attend instructor-led sessions from anywhere with live code sharing, Q&A, and cloud lab instances.",
       cta: "Enquire Live Batches"
@@ -27,7 +27,7 @@ const TrainingModes = () => {
     <section className="py-16 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
+          <span className="text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
             Delivery Options
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">
@@ -37,7 +37,7 @@ const TrainingModes = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {modes.map((m, idx) => (
-            <div key={idx} className="p-8 rounded-2xl bg-white border border-slate-200 flex flex-col justify-between hover:border-teal-500/50 shadow-sm transition-all">
+            <div key={idx} className="p-8 rounded-2xl bg-white border border-slate-200 flex flex-col justify-between hover:border-blue-500/50 shadow-sm transition-all">
               <div>
                 <div className="p-3.5 bg-slate-50 rounded-xl inline-block border border-slate-200 mb-6 shadow-sm">
                   {m.icon}
@@ -46,7 +46,7 @@ const TrainingModes = () => {
                 <p className="text-xs text-slate-600 mt-2.5 leading-relaxed">{m.desc}</p>
               </div>
               <div className="mt-8 pt-4 border-t border-slate-100">
-                <Link to="/enquiry" className="text-xs font-bold text-teal-700 hover:text-teal-800">
+                <Link to="/enquiry" className="text-xs font-bold text-blue-700 hover:text-blue-800">
                   {m.cta} →
                 </Link>
               </div>

@@ -13,6 +13,12 @@ const CourseDetails = () => {
   const [error, setError] = useState(null);
   const [expandedModule, setExpandedModule] = useState(null);
 
+  const formatDeliveryMode = (val) => {
+    if (val === 'offline') return 'Offline';
+    if (val === 'online_offline') return 'Online + Offline';
+    return 'Online';
+  };
+
   const fetchDetails = async () => {
     try {
       setLoading(true);
@@ -50,8 +56,8 @@ const CourseDetails = () => {
         <div className="bg-white border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-sm my-6">
           <div className="max-w-3xl space-y-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200 px-3 py-1 rounded-md">
-                {course.mode || 'Live Online'}
+              <span className="text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1 rounded-md">
+                {formatDeliveryMode(course.deliveryMode)}
               </span>
               <span className="text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1 rounded-md">
                 {course.level || 'All Levels'}
@@ -67,7 +73,7 @@ const CourseDetails = () => {
 
             <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-600 font-medium">
               <div className="flex items-center gap-2">
-                <FaClock className="text-teal-700" />
+                <FaClock className="text-blue-700" />
                 <span>Duration: <strong className="text-slate-900">{course.duration}</strong></span>
               </div>
               <div className="flex items-center gap-2">
@@ -76,14 +82,14 @@ const CourseDetails = () => {
               </div>
               <div className="flex items-center gap-2">
                 <FaLaptop className="text-indigo-600" />
-                <span>Format: <strong className="text-slate-900">{course.mode}</strong></span>
+                <span>Format: <strong className="text-slate-900">{formatDeliveryMode(course.deliveryMode)}</strong></span>
               </div>
             </div>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
                 to="/enquiry"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs shadow transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs shadow transition-all"
               >
                 <FaPaperPlane />
                 Enquire For This Course
@@ -110,7 +116,7 @@ const CourseDetails = () => {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                  <FaBookOpen className="text-teal-700 text-lg" />
+                  <FaBookOpen className="text-blue-700 text-lg" />
                   Course Syllabus & Modules
                 </h3>
                 <span className="text-xs text-slate-500 font-semibold bg-slate-200/60 px-2.5 py-1 rounded-md">
@@ -126,12 +132,12 @@ const CourseDetails = () => {
                       className="w-full p-5 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
                     >
                       <div>
-                        <h4 className="text-base font-bold text-slate-900 hover:text-teal-700 transition-colors">
+                        <h4 className="text-base font-bold text-slate-900 hover:text-blue-700 transition-colors">
                           {mod.title}
                         </h4>
                         {mod.description && <p className="text-xs text-slate-500 mt-1">{mod.description}</p>}
                       </div>
-                      <FaChevronDown className={`text-teal-700 text-xs transition-transform ${expandedModule === mod._id ? 'rotate-180' : ''}`} />
+                      <FaChevronDown className={`text-blue-700 text-xs transition-transform ${expandedModule === mod._id ? 'rotate-180' : ''}`} />
                     </button>
 
                     {expandedModule === mod._id && (
@@ -148,10 +154,10 @@ const CourseDetails = () => {
                                 className="flex items-center justify-between p-3 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 transition-all text-xs font-semibold text-slate-800 group"
                               >
                                 <div className="flex items-center gap-2.5">
-                                  <FaCheckCircle className="text-teal-700 text-xs group-hover:scale-110 transition-transform" />
+                                  <FaCheckCircle className="text-blue-700 text-xs group-hover:scale-110 transition-transform" />
                                   <span>{t.title}</span>
                                 </div>
-                                <span className="text-[11px] text-teal-700 font-bold group-hover:translate-x-1 transition-transform">
+                                <span className="text-[11px] text-blue-700 font-bold group-hover:translate-x-1 transition-transform">
                                   View Topic Details →
                                 </span>
                               </Link>
@@ -163,7 +169,7 @@ const CourseDetails = () => {
                         <div className="pt-2">
                           <Link
                             to={`/courses/${course.slug}/module/${mod.slug}`}
-                            className="text-xs text-teal-700 hover:underline font-bold block text-right"
+                            className="text-xs text-blue-700 hover:underline font-bold block text-right"
                           >
                             Explore Module Page →
                           </Link>
@@ -198,20 +204,26 @@ const CourseDetails = () => {
                 </li>
                 <li className="flex items-center justify-between">
                   <span className="text-slate-500">Format:</span>
-                  <span className="font-semibold text-slate-900">{course.mode}</span>
+                  <span className="font-semibold text-slate-900">{formatDeliveryMode(course.deliveryMode)}</span>
                 </li>
                 <li className="flex items-center justify-between">
                   <span className="text-slate-500">Hands-on Projects:</span>
-                  <span className="font-bold text-teal-700">Included</span>
+                  <span className="font-bold text-blue-700">
+                    {course.handsOnProjects === 'included' || course.handsOnProjects === 'Included' || course.handsOnProjects === true
+                      ? 'Included'
+                      : course.handsOnProjects === 'optional'
+                      ? 'Optional'
+                      : 'Included'}
+                  </span>
                 </li>
               </ul>
 
               <div className="pt-2">
                 <Link
                   to="/enquiry"
-                  className="w-full block text-center py-3 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs uppercase tracking-wider shadow transition-all"
+                  className="w-full block text-center py-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
                 >
-                  Enroll Now
+                  Enroll / Enquire Now
                 </Link>
               </div>
             </div>

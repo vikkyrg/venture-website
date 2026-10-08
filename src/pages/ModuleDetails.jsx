@@ -53,7 +53,7 @@ const ModuleDetails = () => {
 
         {/* Module Header */}
         <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm space-y-3 my-6">
-          <span className="text-[11px] font-bold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200 px-3 py-1 rounded-md">
+          <span className="text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1 rounded-md">
             Module Detail
           </span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">{targetModule.title}</h1>
@@ -63,7 +63,7 @@ const ModuleDetails = () => {
         {/* Topics List */}
         <div className="py-6 space-y-6">
           <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <FaBookOpen className="text-teal-700" />
+            <FaBookOpen className="text-blue-700" />
             Module Topics ({targetModule.topics ? targetModule.topics.length : 0})
           </h3>
 
@@ -73,12 +73,12 @@ const ModuleDetails = () => {
                 <Link
                   key={t._id}
                   to={`/courses/${course.slug}/module/${targetModule.slug}/topic/${t.slug}`}
-                  className="p-5 rounded-xl bg-white border border-slate-200 hover:border-teal-500/50 shadow-sm hover:shadow transition-all flex items-center justify-between group"
+                  className="p-5 rounded-xl bg-white border border-slate-200 hover:border-blue-500/50 shadow-sm hover:shadow transition-all flex items-center justify-between group"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <FaCheckCircle className="text-teal-700 text-xs" />
-                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                      <FaCheckCircle className="text-blue-700 text-xs" />
+                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                         {t.title}
                       </h4>
                     </div>
@@ -86,7 +86,7 @@ const ModuleDetails = () => {
                       <p className="text-xs text-slate-500 line-clamp-1 pl-5">{t.shortDescription}</p>
                     )}
                   </div>
-                  <FaArrowRight className="text-xs text-teal-700 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                  <FaArrowRight className="text-xs text-blue-700 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </Link>
               ))
             ) : (
@@ -97,7 +97,7 @@ const ModuleDetails = () => {
           <div className="pt-4">
             <Link
               to={`/courses/${course.slug}`}
-              className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-teal-700 transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-700 transition-colors"
             >
               <FaArrowLeft className="text-[10px]" />
               Back to {course.title} Syllabus

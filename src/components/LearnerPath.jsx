@@ -4,7 +4,7 @@ import { FaGraduationCap, FaBriefcase, FaExchangeAlt, FaArrowRight } from 'react
 const LearnerPath = () => {
   const paths = [
     {
-      icon: <FaGraduationCap className="text-teal-700 text-2xl" />,
+      icon: <FaGraduationCap className="text-blue-700 text-2xl" />,
       title: "Students & Freshers",
       subtitle: "Kickstart Your IT Career",
       description: "Gain hands-on practical skills in Linux, AWS, and DevOps to stand out during campus drives and off-campus tech hiring.",
@@ -32,7 +32,7 @@ const LearnerPath = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
+          <span className="text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
             Tailored Pathways
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">
@@ -48,7 +48,7 @@ const LearnerPath = () => {
           {paths.map((path, index) => (
             <div 
               key={index}
-              className="group bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-teal-500/50 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 shadow-sm"
+              className="group bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -60,10 +60,10 @@ const LearnerPath = () => {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                   {path.title}
                 </h3>
-                <p className="text-xs font-bold text-teal-700 mt-1">{path.subtitle}</p>
+                <p className="text-xs font-bold text-blue-700 mt-1">{path.subtitle}</p>
                 <p className="text-xs text-slate-600 mt-3 leading-relaxed">
                   {path.description}
                 </p>
@@ -72,7 +72,7 @@ const LearnerPath = () => {
               <div className="mt-8 pt-4 border-t border-slate-200">
                 <Link
                   to="/courses"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-teal-700 hover:text-teal-800 group-hover:translate-x-1 transition-all"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-blue-800 group-hover:translate-x-1 transition-all"
                 >
                   Explore Suitable Courses
                   <FaArrowRight className="text-[10px]" />

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-import { submitEnquiry } from '../services/api';
+import { submitEnquiry, getCourses } from '../services/api';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 
 const Contact = () => {
@@ -11,9 +11,22 @@ const Contact = () => {
     course: 'General Inquiry',
     message: ''
   });
+  const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    const fetchPublishedCourses = async () => {
+      try {
+        const res = await getCourses({ status: 'published' });
+        setCourses(res.data || []);
+      } catch (err) {
+        console.error('Error fetching courses in Contact:', err);
+      }
+    };
+    fetchPublishedCourses();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,7 +60,7 @@ const Contact = () => {
           
           {/* Contact Information */}
           <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs font-bold text-teal-800 uppercase tracking-wider bg-teal-50 px-3 py-1 rounded-md border border-teal-200">
+            <span className="text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
               Get In Touch
             </span>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">We'd Love To Hear From You</h1>
@@ -57,7 +70,7 @@ const Contact = () => {
 
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                <FaMapMarkerAlt className="text-teal-700 text-xl mt-1" />
+                <FaMapMarkerAlt className="text-blue-700 text-xl mt-1" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-900 uppercase">Campus Address</h4>
                   <p className="text-xs text-slate-600 mt-0.5">Venture Soft Tech Campus, Electronic City, Bangalore 560100</p>
@@ -65,7 +78,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                <FaPhoneAlt className="text-teal-700 text-lg" />
+                <FaPhoneAlt className="text-blue-700 text-lg" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-900 uppercase">Phone & WhatsApp</h4>
                   <p className="text-xs text-slate-600 mt-0.5">+91 98765 43210</p>
@@ -73,7 +86,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
-                <FaEnvelope className="text-teal-700 text-lg" />
+                <FaEnvelope className="text-blue-700 text-lg" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-900 uppercase">Email Support</h4>
                   <p className="text-xs text-slate-600 mt-0.5">contact@venturesoft.com</p>
@@ -87,8 +100,8 @@ const Contact = () => {
             <h3 className="text-xl font-bold text-slate-900 mb-6">Send Us A Direct Message</h3>
 
             {successMsg && (
-              <div className="p-4 mb-6 rounded-lg bg-teal-50 border border-teal-200 text-teal-800 text-xs flex items-center gap-2 font-semibold">
-                <FaCheckCircle className="text-base text-teal-700" />
+              <div className="p-4 mb-6 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-xs flex items-center gap-2 font-semibold">
+                <FaCheckCircle className="text-base text-blue-700" />
                 <span>{successMsg}</span>
               </div>
             )}
@@ -109,7 +122,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. Rahul Sharma"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
 
@@ -123,7 +136,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="rahul@example.com"
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                   />
                 </div>
                 <div>
@@ -135,7 +148,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 9876543210"
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                   />
                 </div>
               </div>
@@ -146,13 +159,14 @@ const Contact = () => {
                   name="course"
                   value={formData.course}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 >
                   <option value="General Inquiry">General Inquiry</option>
-                  <option value="AIOps Mastery">AIOps Mastery</option>
-                  <option value="AWS Cloud Architecture">AWS Cloud Architecture</option>
-                  <option value="DevOps & Kubernetes">DevOps & Kubernetes</option>
-                  <option value="Linux Shell Scripting">Linux Shell Scripting</option>
+                  {courses.map((c) => (
+                    <option key={c._id || c.slug} value={c.title}>
+                      {c.title}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -164,14 +178,14 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="How can our counselors help you?"
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-teal-600 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs uppercase tracking-wider shadow transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs uppercase tracking-wider shadow transition-all flex items-center justify-center gap-2"
               >
                 <FaPaperPlane />
                 {loading ? 'Submitting...' : 'Send Message'}

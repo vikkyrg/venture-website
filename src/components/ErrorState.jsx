@@ -14,7 +14,7 @@ const ErrorState = ({ message = 'Something went wrong', onRetry }) => {
         {onRetry && (
           <button
             onClick={onRetry}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs shadow transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs shadow transition-colors"
           >
             <FaRedo className="text-[10px]" />
             Retry
