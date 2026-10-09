@@ -15,26 +15,29 @@ const CourseCard = ({ course }) => {
     : 'Hands-on Projects: Included';
 
   return (
-    <div className="group bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-[#087FC1]/60 transition-all duration-300 flex flex-col h-full overflow-hidden hover:-translate-y-1">
+    <div className="group bg-white rounded-2xl border border-[#DCE7F5] shadow-xs hover:shadow-xl hover:border-[#087FC4] transition-all duration-300 flex flex-col h-full overflow-hidden hover:-translate-y-1 relative">
       
-      {/* Top Banner / Badges */}
-      <div className="p-5 pb-4 border-b border-slate-100 bg-slate-50/70">
+      {/* Top Brand Accent Line */}
+      <div className="h-1 w-full bg-[#087FC4] group-hover:bg-[#1769FF] transition-colors" />
+
+      {/* Top Header / Badges */}
+      <div className="p-5 pb-4 border-b border-slate-100 bg-[#F5F9FF]/60">
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-200/70 text-slate-800 px-2.5 py-1 rounded-md">
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-[#EEF6FF] text-[#087FC4] border border-[#DCE7F5] px-2.5 py-1 rounded-md">
             {formatDeliveryMode(course.deliveryMode)}
           </span>
-          <span className="text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-[#087FC1] border border-blue-200/80 px-2.5 py-1 rounded-md flex items-center gap-1.5">
-            <FaCheckCircle className="text-[10px] text-[#087FC1]" /> Live Syllabus
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-md flex items-center gap-1">
+            <FaCheckCircle className="text-[10px] text-emerald-600" /> Live Syllabus
           </span>
         </div>
 
-        <div className="flex items-start gap-3.5 mt-2">
-          <div className="p-3 bg-white border border-slate-200/90 rounded-xl text-[#087FC1] shadow-2xs group-hover:border-[#087FC1] group-hover:bg-blue-50/50 transition-colors shrink-0">
-            <FaLaptopCode className="text-xl" />
+        <div className="flex items-start gap-3 mt-1">
+          <div className="p-2.5 bg-white border border-[#DCE7F5] rounded-xl text-[#087FC4] shadow-2xs group-hover:border-[#087FC4] group-hover:bg-[#EEF6FF] transition-colors shrink-0">
+            <FaLaptopCode className="text-lg" />
           </div>
           <div>
-            <span className="text-[10px] font-bold text-[#087FC1] uppercase tracking-wider block">Training Track</span>
-            <h3 className="text-base font-bold text-slate-900 group-hover:text-[#087FC1] transition-colors line-clamp-2 min-h-[3rem] mt-0.5 leading-snug">
+            <span className="text-[10px] font-bold text-[#087FC4] uppercase tracking-wider block">Technology Track</span>
+            <h3 className="text-base font-bold text-[#101A32] group-hover:text-[#087FC4] transition-colors line-clamp-2 min-h-[3rem] mt-0.5 leading-snug">
               {course.title}
             </h3>
           </div>
@@ -43,47 +46,47 @@ const CourseCard = ({ course }) => {
 
       {/* Body Content */}
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-        <p className="text-xs text-slate-600 leading-relaxed line-clamp-3 min-h-[3.375rem]">
+        <p className="text-xs text-[#52647E] leading-relaxed line-clamp-3 min-h-[3.375rem] font-normal">
           {course.shortDescription || 'Comprehensive IT training program with hands-on lab exercises and real-world project scenarios.'}
         </p>
 
-        {/* Metadata Strip */}
-        <div className="space-y-3 pt-3 border-t border-slate-100 text-xs text-slate-600">
+        {/* Metadata Grid */}
+        <div className="space-y-3 pt-3 border-t border-slate-100 text-xs text-[#52647E]">
           <div className="grid grid-cols-2 gap-3">
-            <div className="flex items-start gap-2">
-              <FaClock className="text-[#087FC1] text-xs shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 bg-[#F5F9FF] p-2.5 rounded-lg border border-[#DCE7F5]/80">
+              <FaClock className="text-[#087FC4] text-xs shrink-0 mt-0.5" />
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Duration</span>
-                <span className="text-slate-900 font-bold leading-tight mt-0.5">{course.duration || 'Flexible'}</span>
+                <span className="text-[#101A32] font-bold leading-tight mt-0.5 text-xs">{course.duration || 'Flexible'}</span>
               </div>
             </div>
-            <div className="flex items-start gap-2">
-              <FaSignal className="text-slate-400 text-xs shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 bg-[#F5F9FF] p-2.5 rounded-lg border border-[#DCE7F5]/80">
+              <FaSignal className="text-[#087FC4] text-xs shrink-0 mt-0.5" />
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Level</span>
-                <span className="text-slate-900 font-bold leading-tight mt-0.5">{course.level || 'Intermediate'}</span>
+                <span className="text-[#101A32] font-bold leading-tight mt-0.5 text-xs">{course.level || 'Intermediate'}</span>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-[11px] font-semibold text-[#087FC1] bg-blue-50/70 px-3 py-1.5 rounded-lg border border-blue-100">
-            <FaProjectDiagram className="text-[#087FC1] text-xs shrink-0" />
+          <div className="flex items-center gap-2 text-[11px] font-semibold text-[#087FC4] bg-[#EEF6FF] px-3 py-2 rounded-lg border border-[#DCE7F5]">
+            <FaProjectDiagram className="text-[#087FC4] text-xs shrink-0" />
             <span>{handsOnText}</span>
           </div>
         </div>
 
-        {/* Action CTAs */}
+        {/* Action Buttons Aligned at Bottom */}
         <div className="pt-2 flex items-center gap-2 mt-auto">
           <Link
             to={`/courses/${course.slug}`}
-            className="flex-1 text-center py-2.5 px-4 rounded-xl bg-[#087FC1] hover:bg-[#075A9C] text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-1.5"
+            className="flex-1 text-center py-2.5 px-4 rounded-xl bg-[#087FC4] hover:bg-[#075A9C] text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-1.5"
           >
             View Course
-            <FaArrowRight className="text-[10px] text-blue-200 group-hover:translate-x-0.5 transition-transform" />
+            <FaArrowRight className="text-[10px] text-blue-200 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
             to="/contact"
-            className="py-2.5 px-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#087FC1] border border-[#087FC1]/80 font-bold text-xs transition-colors"
+            className="py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 text-[#087FC4] border border-[#087FC4] font-bold text-xs transition-colors shrink-0"
           >
             Enquire
           </Link>
@@ -95,4 +98,5 @@ const CourseCard = ({ course }) => {
 };
 
 export default CourseCard;
+
 

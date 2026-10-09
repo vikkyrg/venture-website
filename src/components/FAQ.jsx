@@ -45,21 +45,22 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-[#EEF6FF] via-[#F5F9FF] to-white border-b border-[#DCE7F5] relative overflow-hidden">
       
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-dots-pattern opacity-25 pointer-events-none -z-0" />
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none -z-0" />
+      <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[#087FC4]/10 rounded-full blur-3xl pointer-events-none -z-0" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs font-bold text-[#087FC1] uppercase tracking-wider bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80 inline-flex items-center gap-1.5 shadow-2xs">
-            <FaQuestionCircle className="text-xs text-[#087FC1]" /> Got Questions?
+        <div className="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+          <span className="text-xs font-bold text-[#087FC4] uppercase tracking-wider bg-white px-3.5 py-1.5 rounded-full border border-[#DCE7F5] inline-flex items-center gap-1.5 shadow-2xs">
+            <FaQuestionCircle className="text-xs text-[#087FC4]" /> Got Questions?
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101A32] mt-3 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 mt-2">
+          <p className="text-sm sm:text-base text-[#52647E] mt-2 font-normal">
             Clear answers regarding our training delivery, lab curriculum, and batch structure.
           </p>
         </div>
@@ -72,26 +73,32 @@ const FAQ = () => {
                 key={idx} 
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isOpen 
-                    ? 'bg-blue-50/30 border-[#087FC1]/60 shadow-md' 
-                    : 'bg-slate-50/70 border-slate-200/80 hover:border-slate-300 hover:bg-white'
+                    ? 'bg-white border-[#087FC4] shadow-md ring-1 ring-[#087FC4]/20' 
+                    : 'bg-white/80 border-[#DCE7F5] hover:border-[#087FC4]/50 hover:bg-white shadow-2xs'
                 }`}
                 data-aos="fade-up"
-                data-aos-delay={idx * 80}
+                data-aos-delay={idx * 70}
               >
                 <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
                   onClick={() => setOpenIndex(isOpen ? -1 : idx)}
-                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-sm sm:text-base text-slate-900 hover:text-[#087FC1] transition-colors"
+                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-sm sm:text-base text-[#101A32] hover:text-[#087FC4] transition-colors focus:outline-none focus:ring-2 focus:ring-[#087FC4] focus:ring-inset"
                 >
                   <span className="pr-4 leading-snug">{faq.q}</span>
-                  <span className={`p-2.5 rounded-xl text-xs shrink-0 transition-colors border ${
-                    isOpen ? 'bg-[#087FC1] text-white border-[#087FC1]' : 'bg-white text-slate-600 border-slate-200'
+                  <span className={`p-2.5 rounded-xl text-xs shrink-0 transition-all border ${
+                    isOpen ? 'bg-[#087FC4] text-white border-[#087FC4]' : 'bg-[#F5F9FF] text-slate-600 border-[#DCE7F5]'
                   }`}>
                     {isOpen ? <FaMinus /> : <FaPlus />}
                   </span>
                 </button>
                 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-blue-100/60 pt-4 bg-white/60">
+                  <div 
+                    id={`faq-answer-${idx}`}
+                    className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-[#52647E] leading-relaxed border-t border-[#EEF6FF] pt-4 bg-white font-normal"
+                  >
                     {faq.a}
                   </div>
                 )}
@@ -106,3 +113,4 @@ const FAQ = () => {
 };
 
 export default FAQ;
+
