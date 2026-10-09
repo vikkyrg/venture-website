@@ -9,7 +9,8 @@ const Contact = () => {
     email: '',
     phone: '',
     course: 'General Inquiry',
-    message: ''
+    message: '',
+    source: 'contact'
   });
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,7 +42,7 @@ const Contact = () => {
     try {
       const res = await submitEnquiry(formData);
       setSuccessMsg(res.message || 'Thank you! Your message has been saved.');
-      setFormData({ name: '', email: '', phone: '', course: 'General Inquiry', message: '' });
+      setFormData({ name: '', email: '', phone: '', course: 'General Inquiry', message: '', source: 'contact' });
     } catch (err) {
       console.error('Contact submission error:', err);
       setErrorMsg(err.response?.data?.message || 'Failed to submit contact message.');

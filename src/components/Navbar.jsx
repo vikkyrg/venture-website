@@ -168,16 +168,7 @@ const Navbar = () => {
             </Link>
           </nav>
 
-          {/* Right Action CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <Link
-              to="/enquiry"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-bold text-white bg-[#087FC1] hover:bg-[#075A9C] px-5 py-2.5 rounded-lg shadow-sm transition-all"
-            >
-              <FaPaperPlane className="text-xs text-blue-200" />
-              Enquire Now
-            </Link>
-          </div>
+
 
           {/* Mobile Hamburger Button */}
           <div className="flex md:hidden items-center">
@@ -234,14 +225,7 @@ const Navbar = () => {
               Contact
             </Link>
           </nav>
-          <div className="pt-2">
-            <Link
-              to="/enquiry"
-              className="block w-full text-center text-xs uppercase tracking-wider font-bold text-white bg-[#087FC1] hover:bg-[#075A9C] py-3 rounded-lg shadow-sm"
-            >
-              Enquire Now
-            </Link>
-          </div>
+
         </div>
       )}
     </header>

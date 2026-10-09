@@ -82,7 +82,7 @@ const CourseCard = ({ course }) => {
             <FaArrowRight className="text-[10px] text-blue-200 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           <Link
-            to="/enquiry"
+            to="/contact"
             className="py-2.5 px-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#087FC1] border border-[#087FC1]/80 font-bold text-xs transition-colors"
           >
             Enquire

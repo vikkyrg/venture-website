@@ -14,7 +14,6 @@ import ModuleDetails from './pages/ModuleDetails';
 import TopicDetails from './pages/TopicDetails';
 import Placement from './pages/Placement';
 import Contact from './pages/Contact';
-import Enquiry from './pages/Enquiry';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import NotFound from './pages/NotFound';
@@ -56,7 +55,6 @@ function App() {
               <Route path="/placement" element={<Placement />} />
               <Route path="/career-support" element={<Placement />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/enquiry" element={<Enquiry />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-conditions" element={<TermsConditions />} />
               <Route path="*" element={<NotFound />} />

@@ -88,7 +88,7 @@ const CourseDetails = () => {
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
-                to="/enquiry"
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs shadow transition-all"
               >
                 <FaPaperPlane />
@@ -220,7 +220,7 @@ const CourseDetails = () => {
 
               <div className="pt-2">
                 <Link
-                  to="/enquiry"
+                  to="/contact"
                   className="w-full block text-center py-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
                 >
                   Enroll / Enquire Now

@@ -46,7 +46,7 @@ const TrainingModes = () => {
                 <p className="text-xs text-slate-600 mt-2.5 leading-relaxed">{m.desc}</p>
               </div>
               <div className="mt-8 pt-4 border-t border-slate-100">
-                <Link to="/enquiry" className="text-xs font-bold text-blue-700 hover:text-blue-800">
+                <Link to="/contact" className="text-xs font-bold text-blue-700 hover:text-blue-800">
                   {m.cta} →
                 </Link>
               </div>

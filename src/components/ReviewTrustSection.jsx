@@ -55,7 +55,7 @@ const ReviewTrustSection = () => {
           {/* Right Action */}
           <div className="flex-shrink-0 text-center lg:text-right">
             <Link
-              to="/enquiry"
+              to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#087FC1] hover:bg-[#075A9C] text-white text-xs font-bold uppercase tracking-wider shadow-xs transition-all"
             >
               <span>Explore Programs</span>

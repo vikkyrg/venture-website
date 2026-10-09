@@ -34,7 +34,7 @@ const PlacementCTA = () => {
             <FaArrowRight className="text-xs text-blue-200 arrow-icon" />
           </Link>
           <Link
-            to="/enquiry"
+            to="/contact"
             className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs uppercase tracking-wider backdrop-blur-xs transition-all"
           >
             <FaPaperPlane className="text-xs text-blue-400" />

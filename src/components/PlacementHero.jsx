@@ -38,7 +38,7 @@ const PlacementHero = () => {
                 Explore Courses
               </Link>
               <Link
-                to="/enquiry"
+                to="/contact"
                 className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs uppercase tracking-wider border border-slate-200 shadow-sm transition-all"
               >
                 <FaPaperPlane className="text-xs text-[#087FC1] arrow-icon" />

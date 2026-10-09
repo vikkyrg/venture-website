@@ -61,7 +61,7 @@ const Hero = () => {
                 <FaArrowRight className="text-xs text-blue-200 arrow-icon" />
               </Link>
               <Link
-                to="/enquiry"
+                to="/contact"
                 className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#087FC1] border border-[#087FC1]/80 font-bold text-xs uppercase tracking-wider shadow-xs transition-all"
               >
                 <FaPaperPlane className="text-xs text-[#087FC1]" />
