@@ -1,34 +1,34 @@
-import { FaRegCheckCircle, FaLaptopCode, FaProjectDiagram, FaUserTie, FaClock, FaCertificate, FaStar } from 'react-icons/fa';
+import { LuCircleCheck, LuLaptop, LuWorkflow, LuUser, LuClock, LuAward, LuStar } from 'react-icons/lu';
 
 const WhyChooseUs = () => {
   const pillars = [
     {
-      icon: <FaRegCheckCircle className="text-[#38BDF8] text-xl" />,
+      icon: <LuCircleCheck className="text-[#38BDF8] text-2xl" />,
       title: "Industry-Aligned Curriculum",
       description: "No outdated theory. Syllabi designed around live enterprise tech workflows and current industry requirements."
     },
     {
-      icon: <FaLaptopCode className="text-[#38BDF8] text-xl" />,
+      icon: <LuLaptop className="text-[#38BDF8] text-2xl" />,
       title: "Interactive Live Labs",
       description: "Hands-on experience in cloud environments, container orchestration, and automated script testing."
     },
     {
-      icon: <FaUserTie className="text-[#38BDF8] text-xl" />,
+      icon: <LuUser className="text-[#38BDF8] text-2xl" />,
       title: "Practitioner Mentors",
       description: "Learn directly from active technology leads and senior architects with real enterprise engineering experience."
     },
     {
-      icon: <FaProjectDiagram className="text-[#38BDF8] text-xl" />,
+      icon: <LuWorkflow className="text-[#38BDF8] text-2xl" />,
       title: "Portfolio Capstone Projects",
       description: "Graduate with production-ready GitHub repository projects you can confidently present during technical interviews."
     },
     {
-      icon: <FaClock className="text-[#38BDF8] text-xl" />,
+      icon: <LuClock className="text-[#38BDF8] text-2xl" />,
       title: "Flexible Training Modes",
       description: "Weekend and evening cohorts structured specifically for working professionals and full-time students."
     },
     {
-      icon: <FaCertificate className="text-[#38BDF8] text-xl" />,
+      icon: <LuAward className="text-[#38BDF8] text-2xl" />,
       title: "Verified Skill Certification",
       description: "Earn an official VentureSoft Certificate of Completion upon clearing practical lab assessments."
     }
@@ -45,13 +45,13 @@ const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up">
-          <span className="text-xs font-bold text-[#38BDF8] uppercase tracking-wider bg-blue-950/80 px-3.5 py-1.5 rounded-full border border-blue-800/60 inline-flex items-center gap-1.5 shadow-sm">
-            <FaStar className="text-xs text-[#38BDF8]" /> Strategic Differentiators
+          <span className="text-sm font-bold text-[#38BDF8] uppercase tracking-wider bg-blue-950/80 px-3.5 py-1.5 rounded-full border border-blue-800/60 inline-flex items-center gap-1.5 shadow-sm">
+            <LuStar className="text-sm text-[#38BDF8]" /> Strategic Differentiators
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-3 tracking-tight">
             Why Technology Professionals Choose VentureSoft
           </h2>
-          <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed font-normal">
+          <p className="text-slate-300 text-base sm:text-lg mt-3 leading-relaxed font-normal">
             We focus on job-ready practical capabilities rather than passive theoretical slide presentations.
           </p>
         </div>
@@ -68,8 +68,8 @@ const WhyChooseUs = () => {
                 {p.icon}
               </div>
               <div>
-                <h4 className="text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors">{p.title}</h4>
-                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed font-normal">{p.description}</p>
+                <h4 className="text-lg font-bold text-white group-hover:text-[#38BDF8] transition-colors">{p.title}</h4>
+                <p className="text-sm sm:text-base text-slate-300 mt-2 leading-relaxed font-normal">{p.description}</p>
               </div>
             </div>
           ))}

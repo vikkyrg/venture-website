@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaCheckCircle, FaLaptopCode, FaGraduationCap, FaPaperPlane, FaLayerGroup, FaShieldAlt, FaStar, FaBuilding, FaChalkboardTeacher } from 'react-icons/fa';
+import { LuArrowRight, LuCircleCheck, LuLaptop, LuGraduationCap, LuSend, LuLayers, LuShield, LuStar, LuBuilding, LuPresentation } from 'react-icons/lu';
 import { getCourses } from '../services/api';
 
 const Hero = () => {
@@ -35,9 +35,9 @@ const Hero = () => {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
             {/* Outlined Badge */}
-            <div data-aos="fade-down" data-aos-delay="100" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#DCE7F5] text-[#101A32] text-xs font-bold uppercase tracking-wider shadow-xs">
+            <div data-aos="fade-down" data-aos-delay="100" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#DCE7F5] text-[#101A32] text-sm font-bold uppercase tracking-wider shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#087FC4] animate-pulse" />
-              <FaGraduationCap className="text-[#087FC4] text-sm" />
+              <LuGraduationCap className="text-[#087FC4] text-base" />
               <span>Corporate Technology Training Institute</span>
             </div>
 
@@ -53,7 +53,7 @@ const Hero = () => {
             </h1>
 
             {/* Supporting Paragraph */}
-            <p data-aos="fade-up" data-aos-delay="300" className="text-base sm:text-lg text-[#52647E] max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            <p data-aos="fade-up" data-aos-delay="300" className="text-lg sm:text-xl text-[#52647E] max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
               VentureSoft delivers practitioner-led IT training designed for enterprise technologies. Master modern engineering through live interactive labs, capstone builds, and career guidance.
             </p>
 
@@ -61,32 +61,32 @@ const Hero = () => {
             <div data-aos="fade-up" data-aos-delay="400" className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-1">
               <Link
                 to="/courses"
-                className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#087FC4] hover:bg-[#075A9C] text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-blue-500/20"
+                className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#087FC4] hover:bg-[#075A9C] text-white font-bold text-sm uppercase tracking-wider shadow-md shadow-blue-500/20"
               >
                 Explore Programs
-                <FaArrowRight className="text-xs text-blue-200 arrow-icon" />
+                <LuArrowRight className="text-sm text-blue-200 arrow-icon" />
               </Link>
               <Link
                 to="/contact"
-                className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#087FC4] border border-[#087FC4] font-bold text-xs uppercase tracking-wider shadow-xs"
+                className="btn-animate w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#087FC4] border border-[#087FC4] font-bold text-sm uppercase tracking-wider shadow-xs"
               >
-                <FaPaperPlane className="text-xs text-[#087FC4]" />
+                <LuSend className="text-sm text-[#087FC4]" />
                 Enquire Now
               </Link>
             </div>
 
             {/* 3 Compact Benefit Checkpoints */}
-            <div data-aos="fade-in" data-aos-delay="500" className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-[#101A32] font-semibold border-t border-[#DCE7F5] mt-6">
+            <div data-aos="fade-in" data-aos-delay="500" className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-[#101A32] font-semibold border-t border-[#DCE7F5] mt-6">
               <div className="flex items-center gap-2 hover:text-[#087FC4] transition-colors">
-                <FaCheckCircle className="text-[#087FC4] text-sm shrink-0" />
+                <LuCircleCheck className="text-[#087FC4] text-base shrink-0" />
                 <span>Practitioner-Led Instruction</span>
               </div>
               <div className="flex items-center gap-2 hover:text-[#087FC4] transition-colors">
-                <FaCheckCircle className="text-[#087FC4] text-sm shrink-0" />
+                <LuCircleCheck className="text-[#087FC4] text-base shrink-0" />
                 <span>Hands-on Scenario Labs</span>
               </div>
               <div className="flex items-center gap-2 hover:text-[#087FC4] transition-colors">
-                <FaCheckCircle className="text-[#087FC4] text-sm shrink-0" />
+                <LuCircleCheck className="text-[#087FC4] text-base shrink-0" />
                 <span>Verified Career Certificate</span>
               </div>
             </div>
@@ -108,10 +108,10 @@ const Hero = () => {
                   className="w-full h-56 object-cover object-center border-b border-[#DCE7F5]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101A32]/80 via-transparent to-transparent flex items-end p-4 justify-between">
-                  <span className="text-white text-xs font-semibold flex items-center gap-1.5 bg-[#101A32]/60 backdrop-blur-xs px-3 py-1 rounded-full border border-white/20">
-                    <FaStar className="text-amber-400 text-xs" /> Real-World Enterprise Labs
+                  <span className="text-white text-sm font-semibold flex items-center gap-1.5 bg-[#101A32]/60 backdrop-blur-xs px-3 py-1 rounded-full border border-white/20">
+                    <LuStar className="text-amber-400 text-sm" /> Real-World Enterprise Labs
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-[#087FC4] text-white px-2.5 py-1 rounded-full shadow-sm">
+                  <span className="text-xs font-bold uppercase tracking-wider bg-[#087FC4] text-white px-2.5 py-1 rounded-full shadow-sm">
                     Interactive
                   </span>
                 </div>
@@ -121,10 +121,10 @@ const Hero = () => {
               <div className="p-5 space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <FaShieldAlt className="text-[#087FC4]" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#101A32]">Featured Training Programs</span>
+                    <LuShield className="text-[#087FC4] text-lg" />
+                    <span className="text-sm font-bold uppercase tracking-wider text-[#101A32]">Featured Training Programs</span>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-[#087FC4] px-2.5 py-1 rounded-full border border-blue-200/80 flex items-center gap-1">
+                  <span className="text-xs font-bold uppercase tracking-wider bg-blue-50 text-[#087FC4] px-2.5 py-1 rounded-full border border-blue-200/80 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#087FC4] animate-ping" /> Live Enrolling
                   </span>
                 </div>
@@ -142,35 +142,35 @@ const Hero = () => {
                       >
                         <div className="flex items-center gap-3">
                           <div className="p-2.5 bg-white rounded-lg border border-[#DCE7F5] text-[#087FC4] group-hover:bg-[#EEF6FF] transition-colors shrink-0 shadow-2xs">
-                            <FaLaptopCode className="text-sm" />
+                            <LuLaptop className="text-base" />
                           </div>
                           <div>
-                            <h4 className="text-xs font-bold text-[#101A32] group-hover:text-[#087FC4] transition-colors line-clamp-1">
+                            <h4 className="text-sm font-bold text-[#101A32] group-hover:text-[#087FC4] transition-colors line-clamp-1">
                               {c.title}
                             </h4>
-                            <span className="text-[11px] text-[#52647E] block mt-0.5">
+                            <span className="text-xs text-[#52647E] block mt-0.5">
                               {c.duration || 'Flexible'} • {c.level || 'Intermediate'}
                             </span>
                           </div>
                         </div>
-                        <FaArrowRight className="text-xs text-slate-400 group-hover:text-[#087FC4] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                        <LuArrowRight className="text-base text-slate-400 group-hover:text-[#087FC4] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
                       </Link>
                     ))
                   ) : (
-                    <div className="text-center text-xs text-slate-500 py-6 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-                      <FaLayerGroup className="mx-auto text-xl text-slate-300 mb-1" />
+                    <div className="text-center text-sm text-slate-500 py-6 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                      <LuLayers className="mx-auto text-2xl text-slate-300 mb-1" />
                       Dynamic catalog loading...
                     </div>
                   )}
                 </div>
 
                 {/* Dark Navy Footer Strip */}
-                <div className="bg-[#101A32] rounded-xl p-3.5 text-xs text-slate-300 flex flex-col sm:flex-row items-center justify-between gap-2 shadow-xs border border-slate-800">
+                <div className="bg-[#101A32] rounded-xl p-3.5 text-sm text-slate-300 flex flex-col sm:flex-row items-center justify-between gap-2 shadow-xs border border-slate-800">
                   <div className="flex items-center gap-2">
-                    <FaChalkboardTeacher className="text-[#087FC4] text-sm shrink-0" />
-                    <span className="font-semibold text-white text-[11px]">Classroom & Live Online Cohorts</span>
+                    <LuPresentation className="text-[#087FC4] text-base shrink-0" />
+                    <span className="font-semibold text-white text-xs">Classroom & Live Online Cohorts</span>
                   </div>
-                  <span className="text-[10px] font-bold bg-[#087FC4] text-white px-2.5 py-0.5 rounded-full uppercase tracking-wider shrink-0">
+                  <span className="text-xs font-bold bg-[#087FC4] text-white px-2.5 py-0.5 rounded-full uppercase tracking-wider shrink-0">
                     Updated Syllabi
                   </span>
                 </div>

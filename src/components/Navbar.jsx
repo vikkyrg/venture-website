@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaChevronDown, FaBars, FaTimes, FaBookOpen, FaAward } from 'react-icons/fa';
+import { LuChevronDown, LuMenu, LuX, LuBookOpen, LuAward } from 'react-icons/lu';
 import logo from '../assets/logo.png';
 import { getCourses } from '../services/api';
 
@@ -113,17 +113,17 @@ const Navbar = () => {
                 }`}
               >
                 Courses
-                <FaChevronDown className={`text-[10px] transition-transform duration-200 ${isCourseDropdownOpen ? 'rotate-180 text-[#087FC4]' : 'text-slate-400'}`} />
+                <LuChevronDown className={`text-xs transition-transform duration-200 ${isCourseDropdownOpen ? 'rotate-180 text-[#087FC4]' : 'text-slate-400'}`} />
               </Link>
 
               {/* Dropdown Menu */}
               {isCourseDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-84 bg-white border border-slate-200/90 rounded-2xl shadow-xl p-3 z-50 dropdown-animate">
                   <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 mb-1">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                      <FaBookOpen className="text-[#087FC4]" /> Training Programs
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <LuBookOpen className="text-[#087FC4]" /> Training Programs
                     </span>
-                    <span className="text-[10px] font-bold bg-blue-50 text-[#087FC4] px-2.5 py-0.5 rounded-full border border-blue-200/70">
+                    <span className="text-xs font-bold bg-blue-50 text-[#087FC4] px-2.5 py-0.5 rounded-full border border-blue-200/70">
                       {coursesList.length} Tracks
                     </span>
                   </div>
@@ -134,10 +134,10 @@ const Navbar = () => {
                         <Link
                           key={course._id || course.slug}
                           to={`/courses/${course.slug}`}
-                          className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-[#EEF6FF] hover:text-[#087FC4] transition-all group"
+                          className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-[#EEF6FF] hover:text-[#087FC4] transition-all group"
                         >
                           <span className="line-clamp-1">{course.title}</span>
-                          <span className="text-[10px] bg-white text-slate-500 group-hover:text-[#087FC4] px-2 py-0.5 rounded border border-slate-200/80 font-medium whitespace-nowrap ml-2 shrink-0">
+                          <span className="text-xs bg-white text-slate-500 group-hover:text-[#087FC4] px-2 py-0.5 rounded border border-slate-200/80 font-medium whitespace-nowrap ml-2 shrink-0">
                             {course.duration || 'Flexible'}
                           </span>
                         </Link>
@@ -152,7 +152,7 @@ const Navbar = () => {
                   <div className="border-t border-slate-100 mt-2 pt-2">
                     <Link
                       to="/courses"
-                      className="block text-center text-xs text-[#087FC4] hover:text-[#075A9C] font-bold py-2 hover:bg-blue-50/70 rounded-xl transition-colors"
+                      className="block text-center text-sm text-[#087FC4] hover:text-[#075A9C] font-bold py-2 hover:bg-blue-50/70 rounded-xl transition-colors"
                     >
                       View All Programs Catalog →
                     </Link>
@@ -191,7 +191,7 @@ const Navbar = () => {
               className="p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:text-[#087FC4] focus:outline-none focus:ring-2 focus:ring-[#087FC4] transition-colors"
               aria-label="Toggle Navigation Menu"
             >
-              {isMobileMenuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
+              {isMobileMenuOpen ? <LuX className="text-2xl" /> : <LuMenu className="text-2xl" />}
             </button>
           </div>
 

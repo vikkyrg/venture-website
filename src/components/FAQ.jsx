@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaPlus, FaMinus, FaQuestionCircle } from 'react-icons/fa';
+import { LuPlus, LuMinus, LuCircleHelp } from 'react-icons/lu';
 import { getCourses } from '../services/api';
 
 const FAQ = () => {
@@ -54,13 +54,13 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
-          <span className="text-xs font-bold text-[#087FC4] uppercase tracking-wider bg-white px-3.5 py-1.5 rounded-full border border-[#DCE7F5] inline-flex items-center gap-1.5 shadow-2xs">
-            <FaQuestionCircle className="text-xs text-[#087FC4]" /> Got Questions?
+          <span className="text-sm font-bold text-[#087FC4] uppercase tracking-wider bg-white px-3.5 py-1.5 rounded-full border border-[#DCE7F5] inline-flex items-center gap-1.5 shadow-2xs">
+            <LuCircleHelp className="text-sm text-[#087FC4]" /> Got Questions?
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101A32] mt-3 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-[#52647E] mt-2 font-normal">
+          <p className="text-base sm:text-lg text-[#52647E] mt-2 font-normal">
             Clear answers regarding our training delivery, lab curriculum, and batch structure.
           </p>
         </div>
@@ -84,20 +84,20 @@ const FAQ = () => {
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${idx}`}
                   onClick={() => setOpenIndex(isOpen ? -1 : idx)}
-                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-sm sm:text-base text-[#101A32] hover:text-[#087FC4] transition-colors focus:outline-none focus:ring-2 focus:ring-[#087FC4] focus:ring-inset"
+                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-bold text-base sm:text-lg text-[#101A32] hover:text-[#087FC4] transition-colors focus:outline-none focus:ring-2 focus:ring-[#087FC4] focus:ring-inset"
                 >
                   <span className="pr-4 leading-snug">{faq.q}</span>
-                  <span className={`p-2.5 rounded-xl text-xs shrink-0 transition-all border ${
+                  <span className={`p-2.5 rounded-xl text-sm shrink-0 transition-all border ${
                     isOpen ? 'bg-[#087FC4] text-white border-[#087FC4]' : 'bg-[#F5F9FF] text-slate-600 border-[#DCE7F5]'
                   }`}>
-                    {isOpen ? <FaMinus /> : <FaPlus />}
+                    {isOpen ? <LuMinus /> : <LuPlus />}
                   </span>
                 </button>
                 
                 {isOpen && (
                   <div 
                     id={`faq-answer-${idx}`}
-                    className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-[#52647E] leading-relaxed border-t border-[#EEF6FF] pt-4 bg-white font-normal"
+                    className="px-5 sm:px-6 pb-6 text-sm sm:text-base text-[#52647E] leading-relaxed border-t border-[#EEF6FF] pt-4 bg-white font-normal"
                   >
                     {faq.a}
                   </div>

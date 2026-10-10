@@ -25,13 +25,13 @@ const TechStackSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         <div className="max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold text-[#087FC1] uppercase tracking-wider bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80 inline-block shadow-2xs">
+          <span className="text-sm font-bold text-[#087FC1] uppercase tracking-wider bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80 inline-block shadow-2xs">
             Core Technology Stack
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
             Enterprise Tools & Technologies Covered
           </h2>
-          <p className="text-sm text-slate-600 mt-2">
+          <p className="text-base text-slate-600 mt-2">
             Master high-demand tools and platforms required across modern engineering teams.
           </p>
         </div>
@@ -48,8 +48,8 @@ const TechStackSection = () => {
                 {t.icon}
               </div>
               <div className="text-left">
-                <span className="text-xs font-bold text-slate-900 block group-hover:text-[#087FC1] transition-colors">{t.name}</span>
-                <span className="text-[10px] text-slate-500 font-medium block">{t.category}</span>
+                <span className="text-sm font-bold text-slate-900 block group-hover:text-[#087FC1] transition-colors">{t.name}</span>
+                <span className="text-xs text-slate-500 font-medium block">{t.category}</span>
               </div>
             </div>
           ))}
